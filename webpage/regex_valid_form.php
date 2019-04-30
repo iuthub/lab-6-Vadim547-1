@@ -4,6 +4,8 @@
 	$text="";
 	$replaceText="";
 	$replacedText="";
+	$TextWithoutSpaces="";
+	$nonDigit="";
 
 	$match="Not checked yet.";
 
@@ -19,6 +21,9 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
 					} else {
 						$match="Does not match!";
 					}
+	
+	$TextWithoutSpaces=preg_replace("/\s/", "", $text);
+	$nonDigit=preg_replace("/\D/", "", $text);
 }
 
 ?>
@@ -47,6 +52,12 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
 
 			<dt>Replaced Text</dt>
 			<dd> <code><?=	$replacedText ?></code></dd>
+
+			<dt>Text without spaces</dt>
+			<dd> <code><?=	$TextWithoutSpaces ?></code></dd>
+
+			<dt>Text without non digits</dt>
+			<dd> <code><?=	$nonDigit ?></code></dd>
 
 			<dt>&nbsp;</dt>
 			<dd><input type="submit" value="Check"></dd>
